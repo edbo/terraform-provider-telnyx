@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
@@ -17,7 +18,8 @@ import (
 )
 
 var (
-	_ resource.Resource = &MessagingProfileResource{}
+	_ resource.Resource                = &MessagingProfileResource{}
+	_ resource.ResourceWithImportState = &MessagingProfileResource{}
 )
 
 func NewMessagingProfileResource() resource.Resource {
@@ -245,4 +247,8 @@ func (r *MessagingProfileResource) Delete(ctx context.Context, req resource.Dele
 	if err != nil {
 		resp.Diagnostics.AddError("Error deleting messaging profile", err.Error())
 	}
+}
+
+func (r *MessagingProfileResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }
