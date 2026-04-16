@@ -121,7 +121,7 @@ func (r *CallControlApplicationResource) Schema(ctx context.Context, req resourc
 					"sip_subdomain_receive_settings": schema.StringAttribute{
 						Optional: true,
 						Computed: true,
-						Default:  stringdefault.StaticString(""),
+						Default:  stringdefault.StaticString("from_anyone"),
 					},
 				},
 				Default: objectdefault.StaticValue(types.ObjectValueMust(
@@ -135,7 +135,7 @@ func (r *CallControlApplicationResource) Schema(ctx context.Context, req resourc
 						"channel_limit":                  types.Int64Null(),
 						"shaken_stir_enabled":            types.BoolNull(),
 						"sip_subdomain":                  types.StringValue(""),
-						"sip_subdomain_receive_settings": types.StringValue(""),
+						"sip_subdomain_receive_settings": types.StringValue("from_anyone"),
 					},
 				)),
 			},
