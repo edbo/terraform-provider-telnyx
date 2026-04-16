@@ -6,8 +6,6 @@ branches:
   - name: alpha
     prerelease: true
 
-repositoryUrl: https://github.com/petsinc/terraform-provider-telnyx
-
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
