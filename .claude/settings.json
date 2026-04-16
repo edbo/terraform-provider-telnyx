@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developers.telnyx.com)",
+      "WebSearch",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://api.telnyx.com/v2/voice_applications)",
+      "Bash(curl -s -H \"Authorization: Bearer invalid\" https://api.telnyx.com/v2/voice_applications)",
+      "WebFetch(domain:support.telnyx.com)"
+    ]
+  }
+}
