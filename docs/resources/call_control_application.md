@@ -24,6 +24,7 @@ Resource for managing Telnyx Call Control Applications
 
 - `active` (Boolean) Specifies whether the application is active
 - `anchorsite_override` (String) Anchorsite Override
+- `call_cost_in_webhooks` (Boolean) Specifies whether call cost webhooks should be sent for this Call Control Application
 - `dtmf_type` (String) DTMF Type
 - `first_command_timeout` (Boolean) Specifies whether calls should hang up after timing out
 - `first_command_timeout_secs` (Number) How many seconds to wait before timing out a dial command

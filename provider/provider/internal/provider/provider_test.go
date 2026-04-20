@@ -290,8 +290,9 @@ resource "telnyx_outbound_voice_profile" "test" {
 }
 
 resource "telnyx_call_control_application" "test" {
-  application_name = "Test Call Control App TF Call Control"
-  active           = true
+  application_name      = "Test Call Control App TF Call Control"
+  active                = true
+  call_cost_in_webhooks = true
   inbound = {
     channel_limit                  = 5
     shaken_stir_enabled            = true
@@ -311,6 +312,7 @@ resource "telnyx_call_control_application" "test" {
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr(resourceName, "application_name", "Test Call Control App TF Call Control"),
 					resource.TestCheckResourceAttr(resourceName, "active", "true"),
+					resource.TestCheckResourceAttr(resourceName, "call_cost_in_webhooks", "true"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.channel_limit", "5"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.shaken_stir_enabled", "true"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.sip_subdomain", "terraform.test.callcontrol.sip.telnyx.com"),
@@ -341,8 +343,9 @@ resource "telnyx_outbound_voice_profile" "test" {
 }
 
 resource "telnyx_call_control_application" "test" {
-  application_name = "Updated Call Control App"
-  active           = false
+  application_name      = "Updated Call Control App"
+  active                = false
+  call_cost_in_webhooks = false
   inbound = {
     channel_limit                  = 3
     shaken_stir_enabled            = false
@@ -362,6 +365,7 @@ resource "telnyx_call_control_application" "test" {
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr(resourceName, "application_name", "Updated Call Control App"),
 					resource.TestCheckResourceAttr(resourceName, "active", "false"),
+					resource.TestCheckResourceAttr(resourceName, "call_cost_in_webhooks", "false"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.channel_limit", "3"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.shaken_stir_enabled", "false"),
 					resource.TestCheckResourceAttr(resourceName, "inbound.sip_subdomain", "updated.terraform.test.callcontrol.sip.telnyx.com"),
