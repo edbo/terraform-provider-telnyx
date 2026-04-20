@@ -3,3 +3,4 @@
 **/output.txt
 last-test.log
 node_modules/
+.claude/
