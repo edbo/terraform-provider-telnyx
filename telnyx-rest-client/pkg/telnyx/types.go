@@ -509,6 +509,7 @@ type CallControlApplication struct {
 	Active                  bool                        `json:"active"`
 	AnchorsiteOverride      string                      `json:"anchorsite_override"`
 	ApplicationName         string                      `json:"application_name"`
+	CallCostInWebhooks      bool                        `json:"call_cost_in_webhooks"`
 	DTMFType                string                      `json:"dtmf_type"`
 	FirstCommandTimeout     bool                        `json:"first_command_timeout"`
 	FirstCommandTimeoutSecs int                         `json:"first_command_timeout_secs"`
@@ -526,6 +527,7 @@ type CallControlApplicationRequest struct {
 	Active                  bool                        `json:"active"`
 	AnchorsiteOverride      string                      `json:"anchorsite_override"`
 	ApplicationName         string                      `json:"application_name"`
+	CallCostInWebhooks      bool                        `json:"call_cost_in_webhooks"`
 	DTMFType                string                      `json:"dtmf_type"`
 	FirstCommandTimeout     bool                        `json:"first_command_timeout"`
 	FirstCommandTimeoutSecs int                         `json:"first_command_timeout_secs"`

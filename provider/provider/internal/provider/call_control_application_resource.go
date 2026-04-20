@@ -36,6 +36,7 @@ type CallControlApplicationResourceModel struct {
 	Active                  types.Bool   `tfsdk:"active"`
 	AnchorsiteOverride      types.String `tfsdk:"anchorsite_override"`
 	ApplicationName         types.String `tfsdk:"application_name"`
+	CallCostInWebhooks      types.Bool   `tfsdk:"call_cost_in_webhooks"`
 	DTMFType                types.String `tfsdk:"dtmf_type"`
 	FirstCommandTimeout     types.Bool   `tfsdk:"first_command_timeout"`
 	FirstCommandTimeoutSecs types.Int64  `tfsdk:"first_command_timeout_secs"`
@@ -79,6 +80,12 @@ func (r *CallControlApplicationResource) Schema(ctx context.Context, req resourc
 				Optional:    true,
 				Computed:    true,
 				Default:     stringdefault.StaticString("Latency"),
+			},
+			"call_cost_in_webhooks": schema.BoolAttribute{
+				Description: "Specifies whether call cost webhooks should be sent for this Call Control Application",
+				Optional:    true,
+				Computed:    true,
+				Default:     booldefault.StaticBool(false),
 			},
 			"dtmf_type": schema.StringAttribute{
 				Description: "DTMF Type",
@@ -223,6 +230,7 @@ func (r *CallControlApplicationResource) Create(ctx context.Context, req resourc
 		Active:                  plan.Active.ValueBool(),
 		AnchorsiteOverride:      plan.AnchorsiteOverride.ValueString(),
 		ApplicationName:         plan.ApplicationName.ValueString(),
+		CallCostInWebhooks:      plan.CallCostInWebhooks.ValueBool(),
 		DTMFType:                plan.DTMFType.ValueString(),
 		FirstCommandTimeout:     plan.FirstCommandTimeout.ValueBool(),
 		FirstCommandTimeoutSecs: int(plan.FirstCommandTimeoutSecs.ValueInt64()),
@@ -287,6 +295,7 @@ func (r *CallControlApplicationResource) Update(ctx context.Context, req resourc
 		Active:                  plan.Active.ValueBool(),
 		AnchorsiteOverride:      plan.AnchorsiteOverride.ValueString(),
 		ApplicationName:         plan.ApplicationName.ValueString(),
+		CallCostInWebhooks:      plan.CallCostInWebhooks.ValueBool(),
 		DTMFType:                plan.DTMFType.ValueString(),
 		FirstCommandTimeout:     plan.FirstCommandTimeout.ValueBool(),
 		FirstCommandTimeoutSecs: int(plan.FirstCommandTimeoutSecs.ValueInt64()),
@@ -365,6 +374,7 @@ func setStateResponse(state *CallControlApplicationResourceModel, application *t
 	state.ApplicationName = types.StringValue(application.ApplicationName)
 	state.Active = types.BoolValue(application.Active)
 	state.AnchorsiteOverride = types.StringValue(application.AnchorsiteOverride)
+	state.CallCostInWebhooks = types.BoolValue(application.CallCostInWebhooks)
 	state.DTMFType = types.StringValue(application.DTMFType)
 	state.FirstCommandTimeout = types.BoolValue(application.FirstCommandTimeout)
 	state.FirstCommandTimeoutSecs = types.Int64Value(int64(application.FirstCommandTimeoutSecs))
